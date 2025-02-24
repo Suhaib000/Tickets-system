@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: django_backend_project
+    ports:
+      - "8080:8080"  # Expose Django on port 8080
+    depends_on:
+      - db
+    environment:
+      - DB_NAME=mydatabase
+      - DB_USER=myuser
+      - DB_PASSWORD=mypassword
+      - DB_HOST=db
+      - DB_PORT=5444  # Connect to PostgreSQL on port 5444
+    volumes:
+      - .:/app
+
+  db:
+    image: postgres
+    container_name: postgres_db_project
+    restart: always
+    ports:
+      - "5444:5444"  # Expose PostgreSQL on port 5444 instead of 5432
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      PGPORT: 5444  # Set PostgreSQL to use port 5444
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:

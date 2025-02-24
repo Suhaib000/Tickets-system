@@ -1,0 +1,59 @@
+# Virtual environment
+venv/
+.env
+*.env
+
+# Python-related files
+__pycache__/
+*.py[cod]
+*.so
+*.pyo
+
+# Django-specific files
+db.sqlite3
+db.sqlite3-journal
+*.log
+*.pot
+*.pyc
+*.pyd
+*.pyo
+migrations/**/__pycache__/
+migrations/**/000*.py
+
+# Django static and media files
+staticfiles/
+media/
+static/
+
+# IDE / Editor / OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.DS_Store
+Thumbs.db
+
+# Coverage and testing
+htmlcov/
+.coverage
+.tox/
+.nox/
+
+
+
+# Node-related (if using React/Vue with Django)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Gunicorn / Supervisor logs
+gunicorn.log
+gunicorn.err
+celerybeat-schedule
+celerybeat.pid
+
+# Ignore compiled translations
+locale/**/django.mo
