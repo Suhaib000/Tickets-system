@@ -57,3 +57,5 @@ celerybeat.pid
 
 # Ignore compiled translations
 locale/**/django.mo
+
+

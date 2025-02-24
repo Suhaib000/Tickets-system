@@ -63,3 +63,18 @@ class AgentTicketViewSet(viewsets.ViewSet):
             all_tickets = Ticket.objects.filter(assigned_agent=agent, status='assigned')
 
         return Response(TicketSerializer(all_tickets, many=True).data, status=status.HTTP_200_OK)
+    
+
+    @action(detail=True, methods=['post'])
+    def sell_ticket(self, request, pk=None):
+        agent = request.user
+        try:
+            ticket = Ticket.objects.get(id=pk, assigned_agent=agent)
+        except Ticket.DoesNotExist:
+            return Response({"error": "Ticket not found or not assigned to you."}, status=status.HTTP_403_FORBIDDEN)
+
+        # Mark ticket as sold
+        ticket.status = 'sold'
+        ticket.save()
+
+        return Response({"message": "Ticket sold successfully!"}, status=status.HTTP_200_OK)
