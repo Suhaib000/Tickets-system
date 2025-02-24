@@ -1,0 +1,933 @@
+{
+	"info": {
+		"_postman_id": "ceb9857d-1d5b-4e30-af2d-d4cf70553e66",
+		"name": "Tickets API Collection",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" width=\"2162\" height=\"1530\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22977577"
+	},
+	"item": [
+		{
+			"name": "Token to prove authentication",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"adminadmin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/auth/jwt/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"jwt",
+						"create"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": [
+				{
+					"name": "Token to prove authentication",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"adminadmin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/auth/jwt/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"jwt",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0MDY2MDI3OCwiaWF0IjoxNzQwNDAxMDc4LCJqdGkiOiJiZDYwNDg3ZGQxNDY0M2QyODFjMGY0ZTAzNjg5ZmQ3OCIsInVzZXJfaWQiOjR9.Twm1kJ68Fq3Fgn2E7lwuksdZe00aM_lQOshTxv_VtnQ\",\r\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjYwMjc4LCJpYXQiOjE3NDA0MDEwNzgsImp0aSI6IjhhZTBjOGQ0NDk3OTQxNWM5MjRiNjA3YjM0NzM4YzA2IiwidXNlcl9pZCI6NH0.SGrzvlwaco8XZjNY96AcvyHVMntANutD2CzCDO5yuiM\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Post new user by admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjU5OTQ2LCJpYXQiOjE3NDA0MDA3NDYsImp0aSI6ImM4YTdiMTYwY2UyNjQ5MDlhYjBmZGVlNmE0ODliMjY1IiwidXNlcl9pZCI6Mn0.kqYcwqvYnxmNLl7kpXYY2eG5yn8dir_1MP6hE6x41O0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"sasa\",\n    \"password\": \"adminadmin\",\n    \"email\": \"sasa@gmail.com\",\n    \"role\": \"agent\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/auth/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"users",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": [
+				{
+					"name": "Token to prove authentication",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjU5OTQ2LCJpYXQiOjE3NDA0MDA3NDYsImp0aSI6ImM4YTdiMTYwY2UyNjQ5MDlhYjBmZGVlNmE0ODliMjY1IiwidXNlcl9pZCI6Mn0.kqYcwqvYnxmNLl7kpXYY2eG5yn8dir_1MP6hE6x41O0\n",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"sasa\",\n    \"password\": \"adminadmin\",\n    \"email\": \"sasa@gmail.com\",\n    \"role\": \"agent\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/auth/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"users",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": 7,\r\n    \"username\": \"saasa\",\r\n    \"email\": \"sAasa@gmail.com\",\r\n    \"role\": \"agent\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All tickets by admin only",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjUyOTc4LCJpYXQiOjE3NDAzOTM3NzgsImp0aSI6IjIyNDNlNjVkMjk2YjRjMDQ5MTcyMzhjYTZhNTI1NmYzIiwidXNlcl9pZCI6NH0.Nnpxgu3V9xK4zsXGgSQK3Y7ksEgbHQxUWf7iM7765wo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/tickets/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tickets",
+						""
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": [
+				{
+					"name": "Get All tickets by admin only",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjUyOTc4LCJpYXQiOjE3NDAzOTM3NzgsImp0aSI6IjIyNDNlNjVkMjk2YjRjMDQ5MTcyMzhjYTZhNTI1NmYzIiwidXNlcl9pZCI6NH0.Nnpxgu3V9xK4zsXGgSQK3Y7ksEgbHQxUWf7iM7765wo\n",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/tickets/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tickets",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"count\": 19,\r\n    \"next\": \"http://localhost:8000/tickets/?page=2\",\r\n    \"previous\": null,\r\n    \"results\": [\r\n        {\r\n            \"id\": 2,\r\n            \"title\": \"T1\",\r\n            \"description\": \"T1\",\r\n            \"created_at\": \"2025-02-21T11:58:18.754908Z\",\r\n            \"status\": \"assigned\",\r\n            \"assigned_agent\": 2\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"title\": \"t3\",\r\n            \"description\": \"t3\",\r\n            \"created_at\": \"2025-02-21T14:31:22.193841Z\",\r\n            \"status\": \"assigned\",\r\n            \"assigned_agent\": 2\r\n        },\r\n        {\r\n            \"id\": 4,\r\n            \"title\": \"t4\",\r\n            \"description\": \"t4\",\r\n            \"created_at\": \"2025-02-21T14:31:31.912913Z\",\r\n            \"status\": \"assigned\",\r\n            \"assigned_agent\": 2\r\n        },\r\n        {\r\n            \"id\": 5,\r\n            \"title\": \"t5\",\r\n            \"description\": \"t5\",\r\n            \"created_at\": \"2025-02-21T14:31:40.413604Z\",\r\n            \"status\": \"assigned\",\r\n            \"assigned_agent\": 2\r\n        },\r\n        {\r\n            \"id\": 6,\r\n            \"title\": \"t6\",\r\n            \"description\": \"t6\",\r\n            \"created_at\": \"2025-02-21T14:31:48.489972Z\",\r\n            \"status\": \"assigned\",\r\n            \"assigned_agent\": 2\r\n        },\r\n        {\r\n            \"id\": 7,\r\n            \"title\": \"t1\",\r\n            \"description\": \"t1\",\r\n            \"created_at\": \"2025-02-21T14:32:11.564157Z\",\r\n            \"status\": \"assigned\",\r\n            \"assigned_agent\": 2\r\n        },\r\n        {\r\n            \"id\": 8,\r\n            \"title\": \"t2\",\r\n            \"description\": \"t2\",\r\n            \"created_at\": \"2025-02-21T14:32:17.670130Z\",\r\n            \"status\": \"assigned\",\r\n            \"assigned_agent\": 2\r\n        },\r\n        {\r\n            \"id\": 9,\r\n            \"title\": \"t7\",\r\n            \"description\": \"t7\",\r\n            \"created_at\": \"2025-02-21T14:32:28.468201Z\",\r\n            \"status\": \"assigned\",\r\n            \"assigned_agent\": 2\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"title\": \"t8\",\r\n            \"description\": \"t8\",\r\n            \"created_at\": \"2025-02-21T14:32:34.065473Z\",\r\n            \"status\": \"assigned\",\r\n            \"assigned_agent\": 2\r\n        },\r\n        {\r\n            \"id\": 11,\r\n            \"title\": \"t9\",\r\n            \"description\": \"t9\",\r\n            \"created_at\": \"2025-02-21T14:32:37.991382Z\",\r\n            \"status\": \"assigned\",\r\n            \"assigned_agent\": 2\r\n        }\r\n    ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Post ticket by admin only",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjUyOTc4LCJpYXQiOjE3NDAzOTM3NzgsImp0aSI6IjIyNDNlNjVkMjk2YjRjMDQ5MTcyMzhjYTZhNTI1NmYzIiwidXNlcl9pZCI6NH0.Nnpxgu3V9xK4zsXGgSQK3Y7ksEgbHQxUWf7iM7765wo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"test-postman\",\n    \"description\": \"test-postman\",\n    \"status\": \"unassigned\",\n    \"assigned_agent\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/tickets/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tickets",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": [
+				{
+					"name": "Post ticket by admin only",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjUyOTc4LCJpYXQiOjE3NDAzOTM3NzgsImp0aSI6IjIyNDNlNjVkMjk2YjRjMDQ5MTcyMzhjYTZhNTI1NmYzIiwidXNlcl9pZCI6NH0.Nnpxgu3V9xK4zsXGgSQK3Y7ksEgbHQxUWf7iM7765wo\n",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"test-postman\",\n    \"description\": \"test-postman\",\n    \"status\": \"unassigned\",\n    \"assigned_agent\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/tickets/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tickets",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": 21,\r\n    \"title\": \"test-postman\",\r\n    \"description\": \"test-postman\",\r\n    \"created_at\": \"2025-02-24T11:55:54.903964Z\",\r\n    \"status\": \"unassigned\",\r\n    \"assigned_agent\": null\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Sell ticket by Agent to the customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjYyNjE3LCJpYXQiOjE3NDA0MDM0MTcsImp0aSI6IjMwYTMzZWU5NDdmODRhMWM5MGIwOWI0ZDgxZWFiZDJiIiwidXNlcl9pZCI6Mn0.rnGVzSHyEdaxfmcsFwI0Zajd8FuPMGbu3D7fWdhL0JA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/agent/tickets/3/sell/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"agent",
+						"tickets",
+						"3",
+						"sell",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": [
+				{
+					"name": "Post ticket by admin only",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjYyNjE3LCJpYXQiOjE3NDA0MDM0MTcsImp0aSI6IjMwYTMzZWU5NDdmODRhMWM5MGIwOWI0ZDgxZWFiZDJiIiwidXNlcl9pZCI6Mn0.rnGVzSHyEdaxfmcsFwI0Zajd8FuPMGbu3D7fWdhL0JA",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/agent/tickets/3/sell/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"agent",
+								"tickets",
+								"3",
+								"sell",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"message\": \"Ticket sold successfully!\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Assign tickets to user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjU5OTQ2LCJpYXQiOjE3NDA0MDA3NDYsImp0aSI6ImM4YTdiMTYwY2UyNjQ5MDlhYjBmZGVlNmE0ODliMjY1IiwidXNlcl9pZCI6Mn0.kqYcwqvYnxmNLl7kpXYY2eG5yn8dir_1MP6hE6x41O0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/agent/tickets/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"agent",
+						"tickets",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": [
+				{
+					"name": "Assign tickets to user",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjU5OTQ2LCJpYXQiOjE3NDA0MDA3NDYsImp0aSI6ImM4YTdiMTYwY2UyNjQ5MDlhYjBmZGVlNmE0ODliMjY1IiwidXNlcl9pZCI6Mn0.kqYcwqvYnxmNLl7kpXYY2eG5yn8dir_1MP6hE6x41O0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"test-postman\",\n    \"description\": \"test-postman\",\n    \"status\": \"unassigned\",\n    \"assigned_agent\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/agent/tickets/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"agent",
+								"tickets",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "[\r\n    {\r\n        \"id\": 3,\r\n        \"title\": \"test-patch\",\r\n        \"description\": \"t3\",\r\n        \"created_at\": \"2025-02-21T14:31:22.193841Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    },\r\n    {\r\n        \"id\": 4,\r\n        \"title\": \"t4\",\r\n        \"description\": \"t4\",\r\n        \"created_at\": \"2025-02-21T14:31:31.912913Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    },\r\n    {\r\n        \"id\": 5,\r\n        \"title\": \"t5\",\r\n        \"description\": \"t5\",\r\n        \"created_at\": \"2025-02-21T14:31:40.413604Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    },\r\n    {\r\n        \"id\": 6,\r\n        \"title\": \"t6\",\r\n        \"description\": \"t6\",\r\n        \"created_at\": \"2025-02-21T14:31:48.489972Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    },\r\n    {\r\n        \"id\": 7,\r\n        \"title\": \"t1\",\r\n        \"description\": \"t1\",\r\n        \"created_at\": \"2025-02-21T14:32:11.564157Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    },\r\n    {\r\n        \"id\": 8,\r\n        \"title\": \"t2\",\r\n        \"description\": \"t2\",\r\n        \"created_at\": \"2025-02-21T14:32:17.670130Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    },\r\n    {\r\n        \"id\": 9,\r\n        \"title\": \"t7\",\r\n        \"description\": \"t7\",\r\n        \"created_at\": \"2025-02-21T14:32:28.468201Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    },\r\n    {\r\n        \"id\": 10,\r\n        \"title\": \"t8\",\r\n        \"description\": \"t8\",\r\n        \"created_at\": \"2025-02-21T14:32:34.065473Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    },\r\n    {\r\n        \"id\": 11,\r\n        \"title\": \"t9\",\r\n        \"description\": \"t9\",\r\n        \"created_at\": \"2025-02-21T14:32:37.991382Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    },\r\n    {\r\n        \"id\": 12,\r\n        \"title\": \"t10\",\r\n        \"description\": \"t10\",\r\n        \"created_at\": \"2025-02-21T14:32:44.996796Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    },\r\n    {\r\n        \"id\": 13,\r\n        \"title\": \"t11\",\r\n        \"description\": \"t11\",\r\n        \"created_at\": \"2025-02-21T14:34:15.048387Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    },\r\n    {\r\n        \"id\": 14,\r\n        \"title\": \"t12\",\r\n        \"description\": \"t12\",\r\n        \"created_at\": \"2025-02-21T14:34:24.041615Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    },\r\n    {\r\n        \"id\": 15,\r\n        \"title\": \"t13\",\r\n        \"description\": \"t13\",\r\n        \"created_at\": \"2025-02-21T14:34:29.419288Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    },\r\n    {\r\n        \"id\": 22,\r\n        \"title\": \"test\",\r\n        \"description\": \"tets\",\r\n        \"created_at\": \"2025-02-24T12:39:50.855256Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    },\r\n    {\r\n        \"id\": 23,\r\n        \"title\": \"tests\",\r\n        \"description\": \"testse\",\r\n        \"created_at\": \"2025-02-24T12:39:53.801906Z\",\r\n        \"status\": \"assigned\",\r\n        \"assigned_agent\": 2\r\n    }\r\n]"
+				}
+			]
+		},
+		{
+			"name": "Update ticket by admin only",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjUyOTc4LCJpYXQiOjE3NDAzOTM3NzgsImp0aSI6IjIyNDNlNjVkMjk2YjRjMDQ5MTcyMzhjYTZhNTI1NmYzIiwidXNlcl9pZCI6NH0.Nnpxgu3V9xK4zsXGgSQK3Y7ksEgbHQxUWf7iM7765wo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"test-put\",\n    \"description\": \"test-put\",\n    \"status\": \"unassigned\",\n    \"assigned_agent\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/tickets/20/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tickets",
+						"20",
+						""
+					]
+				},
+				"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+			},
+			"response": [
+				{
+					"name": "Update ticket by admin only",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjUyOTc4LCJpYXQiOjE3NDAzOTM3NzgsImp0aSI6IjIyNDNlNjVkMjk2YjRjMDQ5MTcyMzhjYTZhNTI1NmYzIiwidXNlcl9pZCI6NH0.Nnpxgu3V9xK4zsXGgSQK3Y7ksEgbHQxUWf7iM7765wo\n",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"test-put\",\n    \"description\": \"test-put\",\n    \"status\": \"unassigned\",\n    \"assigned_agent\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/tickets/20/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tickets",
+								"20",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": 20,\r\n    \"title\": \"test-put\",\r\n    \"description\": \"test-put\",\r\n    \"created_at\": \"2025-02-24T10:48:23.513307Z\",\r\n    \"status\": \"unassigned\",\r\n    \"assigned_agent\": null\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Post ticket by admin only",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjUyOTc4LCJpYXQiOjE3NDAzOTM3NzgsImp0aSI6IjIyNDNlNjVkMjk2YjRjMDQ5MTcyMzhjYTZhNTI1NmYzIiwidXNlcl9pZCI6NH0.Nnpxgu3V9xK4zsXGgSQK3Y7ksEgbHQxUWf7iM7765wo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/tickets/2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tickets",
+						"2",
+						""
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": [
+				{
+					"name": "Delete Post ticket by admin only",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjUyOTc4LCJpYXQiOjE3NDAzOTM3NzgsImp0aSI6IjIyNDNlNjVkMjk2YjRjMDQ5MTcyMzhjYTZhNTI1NmYzIiwidXNlcl9pZCI6NH0.Nnpxgu3V9xK4zsXGgSQK3Y7ksEgbHQxUWf7iM7765wo\n",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/tickets/2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tickets",
+								"2",
+								""
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Update one field in ticket by admin only",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjUyOTc4LCJpYXQiOjE3NDAzOTM3NzgsImp0aSI6IjIyNDNlNjVkMjk2YjRjMDQ5MTcyMzhjYTZhNTI1NmYzIiwidXNlcl9pZCI6NH0.Nnpxgu3V9xK4zsXGgSQK3Y7ksEgbHQxUWf7iM7765wo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"test-patch\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/tickets/3/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tickets",
+						"3",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update one field in ticket by admin only",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjUyOTc4LCJpYXQiOjE3NDAzOTM3NzgsImp0aSI6IjIyNDNlNjVkMjk2YjRjMDQ5MTcyMzhjYTZhNTI1NmYzIiwidXNlcl9pZCI6NH0.Nnpxgu3V9xK4zsXGgSQK3Y7ksEgbHQxUWf7iM7765wo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"test-patch\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/tickets/3/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tickets",
+								"3",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": 3,\r\n    \"title\": \"test-patch\",\r\n    \"description\": \"t3\",\r\n    \"created_at\": \"2025-02-21T14:31:22.193841Z\",\r\n    \"status\": \"assigned\",\r\n    \"assigned_agent\": 2\r\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}

@@ -110,24 +110,24 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DATABASE_NAME', 'mydatabase'),
-        'USER': os.getenv('DATABASE_USER', 'myuser'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD', 'mypassword'),
-        'HOST': os.getenv('DATABASE_HOST', 'db'),  # The service name in docker-compose
-        'PORT': os.getenv('DATABASE_PORT', '5444'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv('DATABASE_NAME', 'mydatabase'),
+#         'USER': os.getenv('DATABASE_USER', 'myuser'),
+#         'PASSWORD': os.getenv('DATABASE_PASSWORD', 'mypassword'),
+#         'HOST': os.getenv('DATABASE_HOST', 'db'),  # The service name in docker-compose
+#         'PORT': os.getenv('DATABASE_PORT', '5444'),
+#     }
+# }
 
 
 # Password validation
